@@ -1,0 +1,1 @@
+package com.propbuy.repo; import com.propbuy.model.AcquisitionOffer; import org.springframework.data.jpa.repository.JpaRepository; import java.util.*; public interface OfferRepository extends JpaRepository<AcquisitionOffer,Long>{List<AcquisitionOffer> findByPropertySellerId(Long sellerId); List<AcquisitionOffer> findByPropertyId(Long propertyId);}

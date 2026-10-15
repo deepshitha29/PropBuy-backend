@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    # The default profile must never silently use an in-memory database. H2 is
+    # intentionally available only through application-demo.yml.
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:validate}
+  flyway:
+    enabled: ${FLYWAY_ENABLED:true}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 30MB
+  mail:
+    host: ${MAIL_HOST:}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+server:
+  port: ${PORT:8081}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  health:
+    mail:
+      enabled: false
+app:
+  jwt-secret: ${APP_JWT_SECRET}
+  jwt-expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  cors-origins: ${CORS_ORIGINS:http://localhost:8080,http://localhost:5500,https://*.vercel.app,https://*.onrender.com}
+  frontend-base-url: ${FRONTEND_BASE_URL:http://localhost:8080}
+  upload-dir: ${UPLOAD_DIR:uploads}
+  otp-expiry-minutes: ${OTP_EXPIRY_MINUTES:10}
+  otp-dev-log: ${OTP_DEV_LOG:false}
+  mail-enabled: ${MAIL_ENABLED:false}
+  demo-mode: ${DEMO_MODE:false}

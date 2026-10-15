@@ -1,0 +1,1 @@
+package com.propbuy.exception; import org.springframework.http.HttpStatus; public class ForbiddenException extends ApiException { public ForbiddenException(String m){super(HttpStatus.FORBIDDEN,m);} public ForbiddenException(String m,String c){super(HttpStatus.FORBIDDEN,m,c);} }

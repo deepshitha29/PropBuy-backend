@@ -1,0 +1,3 @@
+package com.propbuy.model;
+import jakarta.persistence.*; import lombok.*; import java.math.*; import java.time.*;
+@Entity @Table(name="purchase_requests") @Getter @Setter @NoArgsConstructor public class PurchaseRequest { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id; @ManyToOne(optional=false) @JoinColumn(name="buyer_id") private User buyer; @ManyToOne(optional=false) @JoinColumn(name="listing_id") private ResaleListing listing; @Column(name="proposed_price") private BigDecimal proposedPrice; private String message,status="SUBMITTED"; @Column(name="created_at") private LocalDateTime createdAt=LocalDateTime.now(); }
